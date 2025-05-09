@@ -251,7 +251,7 @@ int check(char *a) {
 int control(char *a) {
   if (svstatus_get() <= 0) return(-1);
   if (svstatus[17] == *a)
-    if (*a != 'd' || svstatus[18] == 1) return(0); /* once w/o term */
+    if (svstatus[18] == 1) return(0); /* once w/o term */
   if ((fd =open_write("supervise/control")) == -1) {
     if (errno != error_nodevice)
       warn("unable to open supervise/control");
